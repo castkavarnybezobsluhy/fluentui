@@ -4,8 +4,12 @@ import { Meta } from '@storybook/react';
 import { CalendarMonth24Regular } from '@fluentui/react-icons';
 import descriptionMd from './ButtonDescription.md';
 import bestPracticesMd from './ButtonBestPractices.md';
+import { withLiveEdit } from 'storybook-addon-react-live-edit';
 
-export const Default = (props: ButtonProps) => <Button {...props}>Button</Button>;
+export const Default = withLiveEdit(`return <div>abc</div>`);
+
+// Original story:
+// export const Default = (props: ButtonProps) => <Button {...props}>Button</Button>;
 
 export const Emphasis = () => (
   <>

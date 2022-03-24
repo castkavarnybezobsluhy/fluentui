@@ -19,6 +19,6 @@ const releaseDetails: Partial<Octokit.ReposUpdateReleaseParams> = {
   name: `react-components v${reactComponentsPackageJson.version}`,
   draft: false,
   prerelease: true,
-  // body: await getMarkdownForEntry(entry),
+  body: '', // await getMarkdownForEntry(entry)
 };
 github.repos.createRelease(releaseDetails as Octokit.ReposCreateReleaseParams);

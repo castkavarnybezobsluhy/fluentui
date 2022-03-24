@@ -69,6 +69,7 @@ jobs:
         displayName: 'Update github release notes'
 
       - script: |
+          cd packages/react-components
           CHROMATIC_PROJECT_TOKEN=$(chromaticProjectToken) yarn chromatic
         displayName: 'Publish to Chromatic'
 

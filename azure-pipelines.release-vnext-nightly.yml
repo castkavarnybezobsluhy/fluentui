@@ -1,5 +1,5 @@
 pr: none
-trigger: none
+#trigger: none
 
 # Customize build number to include major version
 # Example: v9_20201022.1
@@ -29,7 +29,7 @@ jobs:
 
   - job: Release
     #dependsOn: Compliance
-    pool: '1ES-Host-Ubuntu'
+    #pool: '1ES-Host-Ubuntu'
     workspace:
       clean: all
     steps:

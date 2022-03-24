@@ -65,7 +65,7 @@ jobs:
       #        displayName: yarn build
 
       - script: |
-          node -r ./scripts/ts-node-register ./scripts/updateReleaseNotes/index.ts --token=$(githubPAT) --apply --debug
+          node -r ./scripts/ts-node-register ./scripts/updateReleaseNotes/createReleaseWithoutNotes.ts --token=$(githubPAT) --apply --debug
         displayName: 'Update github release notes'
 
       #- script: |

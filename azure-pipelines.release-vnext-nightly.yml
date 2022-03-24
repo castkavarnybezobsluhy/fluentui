@@ -25,7 +25,7 @@ schedules:
         - master
 
 jobs:
-  - template: .devops/templates/compliance-job.yml
+  #- template: .devops/templates/compliance-job.yml
 
   - job: Release
     dependsOn: Compliance

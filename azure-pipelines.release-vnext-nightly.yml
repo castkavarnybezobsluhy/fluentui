@@ -28,7 +28,7 @@ jobs:
   #- template: .devops/templates/compliance-job.yml
 
   - job: Release
-    dependsOn: Compliance
+    #dependsOn: Compliance
     pool: '1ES-Host-Ubuntu'
     workspace:
       clean: all

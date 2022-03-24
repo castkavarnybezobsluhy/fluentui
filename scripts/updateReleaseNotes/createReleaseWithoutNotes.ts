@@ -16,7 +16,7 @@ if (!argv.apply) {
 const releaseDetails: Partial<Octokit.ReposUpdateReleaseParams> = {
   ...repoDetails,
   tag_name: reactComponentsPackageJson.version,
-  name: `react-components v${reactComponentsPackageJson}`,
+  name: `react-components v${reactComponentsPackageJson.version}`,
   draft: false,
   prerelease: true,
   // body: await getMarkdownForEntry(entry),

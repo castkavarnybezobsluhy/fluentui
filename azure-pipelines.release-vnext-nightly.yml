@@ -74,11 +74,11 @@ jobs:
       #        inputs:
       #          BuildDropPath: $(System.DefaultWorkingDirectory)
 
-      - task: PublishPipelineArtifact@1
-        displayName: 📒 Publish Manifest
-        inputs:
-          artifactName: SBom-$(System.JobAttempt)
-          targetPath: $(System.DefaultWorkingDirectory)/_manifest
+      # - task: PublishPipelineArtifact@1
+      #   displayName: 📒 Publish Manifest
+      #   inputs:
+      #     artifactName: SBom-$(System.JobAttempt)
+      #     targetPath: $(System.DefaultWorkingDirectory)/_manifest
 #      - template: .devops/templates/cleanup.yml
 #        parameters:
 #          checkForModifiedFiles: false

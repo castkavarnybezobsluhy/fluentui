@@ -65,8 +65,8 @@ jobs:
         displayName: yarn build
 
       - script: |
-        node -r ./scripts/ts-node-register ./scripts/updateReleaseNotes/index.ts --token=$(githubPAT) --apply --debug
-      displayName: 'Update github release notes'
+          node -r ./scripts/ts-node-register ./scripts/updateReleaseNotes/index.ts --token=$(githubPAT) --apply --debug
+        displayName: 'Update github release notes'
 
       #- script: |
       #    yarn publish:beachball -n $(npmToken) --no-push --tag nightly

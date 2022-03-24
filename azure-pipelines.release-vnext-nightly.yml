@@ -35,12 +35,12 @@ jobs:
     steps:
       - template: .devops/templates/tools.yml
 
-      - task: Bash@3
-        inputs:
-          filePath: yarn-ci.sh
-        displayName: yarn
+      #      - task: Bash@3
+      #        inputs:
+      #          filePath: yarn-ci.sh
+      #        displayName: yarn
 
-        # Bumps all v9 packages to a x.x.x-nightly.commitSha version and checks in change files
+      # Bumps all v9 packages to a x.x.x-nightly.commitSha version and checks in change files
       #- script: |
       #    date=$(date +"%Y%m%d-%H%M")
       #    #release version name will follow a 0.0.0-nightly-{year}{month}{day}-{hour}{minute} format.
@@ -52,17 +52,17 @@ jobs:
 
       # --only makes it only run tests (otherwise due to the missing --production arg, lage would re-run the build)
       # https://github.com/microsoft/fluentui/issues/21686
-      - script: |
-          yarn run:published test
-        displayName: yarn test
-
-      - script: |
-          yarn run:published lint
-        displayName: yarn lint
-
-      - script: |
-          yarn run:published build --production
-        displayName: yarn build
+      #      - script: |
+      #          yarn run:published test
+      #        displayName: yarn test
+      #
+      #      - script: |
+      #          yarn run:published lint
+      #        displayName: yarn lint
+      #
+      #      - script: |
+      #          yarn run:published build --production
+      #        displayName: yarn build
 
       - script: |
           node -r ./scripts/ts-node-register ./scripts/updateReleaseNotes/index.ts --token=$(githubPAT) --apply --debug

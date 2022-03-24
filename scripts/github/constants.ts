@@ -1,6 +1,6 @@
 import { IRepoDetails } from './types';
 
 export const fluentRepoDetails: IRepoDetails = {
-  owner: 'microsoft',
+  owner: 'peterdraex',
   repo: 'fluentui',
 };

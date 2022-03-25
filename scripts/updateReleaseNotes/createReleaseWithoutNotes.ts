@@ -21,7 +21,7 @@ async function createRelease() {
     draft: false,
     prerelease: true,
     body: '',
-    target_commitish: 'pipeline', // branch name
+    // target_commitish: 'pipeline', // branch name, creates release from the default branch if it's left undefined
   };
   github.repos.createRelease(releaseDetails as Octokit.ReposCreateReleaseParams);
 }

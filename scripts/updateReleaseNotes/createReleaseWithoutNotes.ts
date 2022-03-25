@@ -7,18 +7,24 @@
 import { Octokit } from '@octokit/rest';
 import { argv, repoDetails, github } from './init';
 import reactComponentsPackageJson from '../../packages/react-components/package.json';
+import { getBranch } from './getBranch';
 
 if (!argv.apply) {
   console.error('\nERROR: createReleaseWithoutNotes does not support dry run. Use the "--apply" flag.\n');
   process.exit(1);
 }
 
-const releaseDetails: Partial<Octokit.ReposUpdateReleaseParams> = {
-  ...repoDetails,
-  tag_name: reactComponentsPackageJson.version,
-  name: `react-components v${reactComponentsPackageJson.version}`,
-  draft: false,
-  prerelease: true,
-  body: '',
-};
-github.repos.createRelease(releaseDetails as Octokit.ReposCreateReleaseParams);
+async function createRelease() {
+  const releaseDetails: Partial<Octokit.ReposUpdateReleaseParams> = {
+    ...repoDetails,
+    tag_name: reactComponentsPackageJson.version,
+    name: `react-components v${reactComponentsPackageJson.version}`,
+    draft: false,
+    prerelease: true,
+    body: '',
+    target_commitish: await getBranch(),
+  };
+  github.repos.createRelease(releaseDetails as Octokit.ReposCreateReleaseParams);
+}
+
+createRelease();

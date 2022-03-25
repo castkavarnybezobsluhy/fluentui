@@ -7,12 +7,15 @@
 import { Octokit } from '@octokit/rest';
 import { argv, repoDetails, github } from './init';
 import reactComponentsPackageJson from '../../packages/react-components/package.json';
-import { getBranch } from './getBranch';
+import { execSync } from 'child_process';
 
 if (!argv.apply) {
   console.error('\nERROR: createReleaseWithoutNotes does not support dry run. Use the "--apply" flag.\n');
   process.exit(1);
 }
+
+const branchName = execSync('git rev-parse --abbrev-ref HEAD').toString('utf8');
+console.log(branchName);
 
 async function createRelease() {
   const releaseDetails: Partial<Octokit.ReposUpdateReleaseParams> = {
@@ -22,7 +25,7 @@ async function createRelease() {
     draft: false,
     prerelease: true,
     body: '',
-    target_commitish: await getBranch(),
+    target_commitish: branchName,
   };
   github.repos.createRelease(releaseDetails as Octokit.ReposCreateReleaseParams);
 }

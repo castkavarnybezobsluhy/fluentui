@@ -20,7 +20,7 @@ async function createRelease() {
     name: `react-components v${reactComponentsPackageJson.version}`,
     draft: false,
     prerelease: true,
-    body: '',
+    body: `v${reactComponentsPackageJson.version} release`,
     // target_commitish: 'pipeline', // branch name, creates release from the default branch if it's left undefined
   };
   github.repos.createRelease(releaseDetails as Octokit.ReposCreateReleaseParams);

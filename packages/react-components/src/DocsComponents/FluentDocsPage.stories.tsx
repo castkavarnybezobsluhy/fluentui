@@ -1,7 +1,8 @@
 import * as React from 'react';
 import { DocsContext, ArgsTable, Title, Subtitle, Description, PRIMARY_STORY } from '@storybook/addon-docs';
 import { makeStyles, shorthands } from '@griffel/react';
-import { Toc } from './Toc.stories';
+import { KnownIssues } from './KnownIssues.stories';
+import { Toc, nameToHash } from './Toc.stories';
 import { isHosted } from './isHosted';
 import { FluentDocsDocsStory } from './FluentDocsDocsStory.stories';
 
@@ -70,9 +71,10 @@ export const FluentDocsPage = () => {
               {story === primaryStory && <ArgsTable story={PRIMARY_STORY} />}
             </React.Fragment>
           ))}
+          <KnownIssues componentName={context.parameters.component.displayName} />
         </div>
         <div className={styles.toc}>
-          <Toc stories={stories} />
+          <Toc stories={[...stories, { id: 'known-issues', name: 'Known issues' }]} />
         </div>
       </div>
     </div>
